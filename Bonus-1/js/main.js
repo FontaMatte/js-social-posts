@@ -71,7 +71,7 @@ for (let i = 0; i < posts.length; i++) {
                                 </div>
                                 <div class="post-meta__data">
                                     <div class="post-meta__author">${posts[i].author.name}</div>
-                                    <div class="post-meta__time">${posts[i].created}</div>
+                                    <div class="post-meta__time">${dateConversion(posts[i].created)}</div>
                                 </div>                    
                             </div>
                             </div>
@@ -82,7 +82,7 @@ for (let i = 0; i < posts.length; i++) {
                             <div class="post__footer">
                             <div class="likes js-likes">
                                 <div class="likes__cta">
-                                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                                    <a class="like-button js-like-button" href="#nogo" data-postid="1">
                                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                                         <span class="like-button__label">Mi Piace</span>
                                     </a>
@@ -93,10 +93,15 @@ for (let i = 0; i < posts.length; i++) {
                             </div> 
                         </div> `
     postsList.append(post);
+};    
 
-    const likeButton = document.querySelectorAll('.like-button');
-    const likesCounterDom = document.querySelector('.js-likes-counter');
+const likeButton = document.querySelectorAll('.like-button');
+const likesCounterDom = document.querySelectorAll('.js-likes-counter');
 
+
+
+for (let i = 0; i < likeButton.length; i++) {   
+    
     let likeCounter = posts[i].likes;
 
     likeButton[i].addEventListener('click',
@@ -117,11 +122,21 @@ for (let i = 0; i < posts.length; i++) {
         }   
 
         // stampo in pagina il numero aggiornato di like
-        likesCounterDom.innerHTML = likeCounter;
+        likesCounterDom[i].innerHTML = likeCounter;
 
-    });   
+    });  
     
-};
+}
+
+// Funzione per formattare le date
+function dateConversion(date) {
+
+let usDate = date;
+usDate = usDate.split('-');
+let euroDate = usDate.reverse().join('/');
+return euroDate;
+
+}
 
 
 

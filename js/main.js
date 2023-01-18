@@ -56,6 +56,7 @@ const posts = [
     }
 ];
 
+
 const postsList = document.querySelector('.posts-list');
 
 let postsId = [];
@@ -127,6 +128,7 @@ for (let i = 0; i < likeButton.length; i++) {
     });  
     
 }
+
 
 
 
