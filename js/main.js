@@ -1,6 +1,6 @@
 const posts = [
     {
-        "id": 1,
+        "id": '01',
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/300?image=171",
         "author": {
@@ -11,7 +11,7 @@ const posts = [
         "created": "2021-06-25"
     },
     {
-        "id": 2,
+        "id": '02',
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=112",
         "author": {
@@ -22,7 +22,7 @@ const posts = [
         "created": "2021-09-03"
     },
     {
-        "id": 3,
+        "id": '03',
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=234",
         "author": {
@@ -33,7 +33,7 @@ const posts = [
         "created": "2021-05-15"
     },
     {
-        "id": 4,
+        "id": '04',
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
@@ -44,7 +44,7 @@ const posts = [
         "created": "2021-04-03"
     },
     {
-        "id": 5,
+        "id": '05',
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=534",
         "author": {
@@ -57,6 +57,8 @@ const posts = [
 ];
 
 const postsList = document.querySelector('.posts-list');
+
+let postsId = [];
 
 for (let i = 0; i < posts.length; i++) {
 
@@ -92,4 +94,35 @@ for (let i = 0; i < posts.length; i++) {
                         </div> `
     postsList.append(post);
 
-}
+    const likeButton = document.querySelectorAll('.like-button');
+    const likesCounterDom = document.querySelector('.js-likes-counter');
+
+    let likeCounter = posts[i].likes;
+
+    likeButton[i].addEventListener('click',
+    function () {
+        // se e' gia' presente il like lo rimuovo altrimenti lo aggiungo
+        if (this.classList.contains('like-button--liked')) {
+
+            this.classList.remove('like-button--liked');
+            likeCounter--;
+            
+        }
+        else {
+
+            this.classList.add('like-button--liked');
+            likeCounter++;
+            postsId.push(posts[i].id);
+
+        }   
+
+        // stampo in pagina il numero aggiornato di like
+        likesCounterDom.innerHTML = likeCounter;
+
+    });   
+    
+};
+
+
+
+
