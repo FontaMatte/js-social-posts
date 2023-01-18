@@ -93,10 +93,15 @@ for (let i = 0; i < posts.length; i++) {
                             </div> 
                         </div> `
     postsList.append(post);
+};    
 
-    const likeButton = document.querySelectorAll('.like-button');
-    const likesCounterDom = document.querySelector('.js-likes-counter');
+const likeButton = document.querySelectorAll('.like-button');
+const likesCounterDom = document.querySelectorAll('.js-likes-counter');
 
+
+
+for (let i = 0; i < likeButton.length; i++) {   
+    
     let likeCounter = posts[i].likes;
 
     likeButton[i].addEventListener('click',
@@ -117,12 +122,11 @@ for (let i = 0; i < posts.length; i++) {
         }   
 
         // stampo in pagina il numero aggiornato di like
-        likesCounterDom.innerHTML = likeCounter;
+        likesCounterDom[i].innerHTML = likeCounter;
 
-    });   
+    });  
     
-};
-
+}
 
 
 
