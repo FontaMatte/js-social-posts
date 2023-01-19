@@ -61,12 +61,24 @@ const postsList = document.querySelector('.posts-list');
 
 for (let i = 0; i < posts.length; i++) {
 
+    let authorImage;
+
+    if (posts[i].author.image != null) {
+        authorImage = `<img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">`;
+    }
+    else {
+        let imageFallback = '';
+        const authorNameSplitted = posts[i].author.name.split(' ');
+        imageFallback += authorNameSplitted[0].charAt(0) + authorNameSplitted[1].charAt(0);
+        authorImage = `<span class="image-fallback">${imageFallback}</span>`;
+    }
+
     const post = document.createElement('div');
     post.classList.add('post');
     post.innerHTML = `<div class="post__header">
                             <div class="post-meta">                    
                                 <div class="post-meta__icon">
-                                    <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].name}">                    
+                                    ${authorImage}                  
                                 </div>
                                 <div class="post-meta__data">
                                     <div class="post-meta__author">${posts[i].author.name}</div>
