@@ -58,8 +58,6 @@ const posts = [
 
 const postsList = document.querySelector('.posts-list');
 
-let postsId = [];
-
 for (let i = 0; i < posts.length; i++) {
 
     const post = document.createElement('div');
@@ -98,7 +96,7 @@ for (let i = 0; i < posts.length; i++) {
 const likeButton = document.querySelectorAll('.like-button');
 const likesCounterDom = document.querySelectorAll('.js-likes-counter');
 
-
+let postsId = [];
 
 for (let i = 0; i < likeButton.length; i++) {   
     
@@ -124,8 +122,7 @@ for (let i = 0; i < likeButton.length; i++) {
         // stampo in pagina il numero aggiornato di like
         likesCounterDom[i].innerHTML = likeCounter;
 
-    });  
-    
+    });     
 }
 
 // Funzione per formattare le date
